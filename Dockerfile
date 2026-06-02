@@ -29,11 +29,11 @@ ENV PATH="/opt/venv/bin:$PATH"
 
 # Copy requirements
 WORKDIR /build
-COPY requirements.txt .
+COPY requirements-minimal.txt .
 
 # Install Python dependencies
 RUN pip install --no-cache-dir --upgrade pip setuptools wheel && \
-    pip install --no-cache-dir -r requirements.txt
+    pip install --no-cache-dir -r requirements-minimal.txt
 
 # ============================================================================
 # Stage 2: Runtime - Create final image

@@ -119,6 +119,17 @@ async def generate_playbook_from_event(request: EventRequest):
                 detail="ANTHROPIC_API_KEY not configured",
             )
         provider_config["api_key"] = api_key
+    elif provider_name == "custom":
+        # Custom OpenAI-compatible provider (LiteLLM, vLLM, etc.)
+        endpoint = os.getenv("CUSTOM_LLM_ENDPOINT")
+        if not endpoint:
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail="CUSTOM_LLM_ENDPOINT not configured",
+            )
+        provider_config["endpoint"] = endpoint
+        provider_config["api_key"] = os.getenv("CUSTOM_LLM_API_KEY", "dummy-key")
+        provider_config["model"] = os.getenv("CUSTOM_LLM_MODEL", "gpt-4")
 
     try:
         provider = get_provider(provider_name, config=provider_config)
@@ -141,9 +152,10 @@ async def generate_playbook_from_event(request: EventRequest):
     )
 
     # Initialize orchestrator
+    # For demo: disable ansible-lint validation (not in minimal container)
     orchestrator = PlaybookOrchestrator(
         provider=provider,
-        auto_fix_lint=True,
+        auto_fix_lint=False,
         strict_validation=False,
     )
 

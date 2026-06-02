@@ -22,10 +22,12 @@ from sage.core.providers.base import (
     ProviderStatus,
 )
 from sage.core.providers.claude import ClaudeProvider
+from sage.core.providers.custom import CustomProvider
 
 __all__ = [
     "BaseLLMProvider",
     "ClaudeProvider",
+    "CustomProvider",
     "GenerationRequest",
     "GenerationResponse",
     "ModelTier",
@@ -38,6 +40,7 @@ __all__ = [
 PROVIDERS = {
     "claude": ClaudeProvider,
     "anthropic": ClaudeProvider,  # Alias
+    "custom": CustomProvider,  # Custom OpenAI-compatible providers
 }
 
 

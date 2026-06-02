@@ -1,0 +1,13 @@
+{
+  "event_type": "disk_full",
+  "description": "Disk usage at 95% on /var/log partition. Need to clean up old log files to free space.",
+  "host": "web-server-01.example.com",
+  "severity": "high",
+  "metadata": {
+    "filesystem": "/var/log",
+    "usage_percent": 95,
+    "available_gb": 2.3,
+    "threshold": 90
+  },
+  "tags": ["disk", "storage", "critical"]
+}

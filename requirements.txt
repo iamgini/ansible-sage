@@ -16,9 +16,9 @@ aiofiles==24.1.0
 
 # Ansible Tools (will be called as subprocess)
 ansible-core==2.17.7
-ansible-lint==24.12.3
-molecule==24.12.0
-molecule-plugins[docker]==24.12.0
+ansible-lint>=26.0.0  # Use latest compatible version
+molecule>=24.0.0  # Use latest compatible version
+molecule-plugins[docker]>=24.0.0
 
 # YAML Processing
 pyyaml==6.0.2
