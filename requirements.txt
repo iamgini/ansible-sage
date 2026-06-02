@@ -1,0 +1,56 @@
+# Ansible Sage - Production Dependencies
+
+# Web Framework
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+pydantic==2.10.6
+pydantic-settings==2.7.1
+
+# LLM Providers
+anthropic==0.42.0
+openai==1.59.7
+
+# HTTP Client
+httpx==0.28.1
+aiofiles==24.1.0
+
+# Ansible Tools (will be called as subprocess)
+ansible-core==2.17.7
+ansible-lint==24.12.3
+molecule==24.12.0
+molecule-plugins[docker]==24.12.0
+
+# YAML Processing
+pyyaml==6.0.2
+ruamel.yaml==0.18.9
+
+# Database
+asyncpg==0.30.0
+sqlalchemy[asyncio]==2.0.36
+alembic==1.14.0
+
+# Redis
+redis==5.2.1
+redis-om==0.3.3
+
+# Configuration
+python-dotenv==1.0.1
+
+# Logging & Monitoring
+structlog==24.4.0
+python-json-logger==3.2.1
+prometheus-client==0.21.0
+
+# Utilities
+python-multipart==0.0.20
+click==8.1.8
+rich==13.9.4
+tenacity==9.0.0
+
+# Security
+cryptography==44.0.0
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+
+# Async utilities
+anyio==4.8.0
