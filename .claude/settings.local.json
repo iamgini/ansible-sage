@@ -14,9 +14,14 @@
       "Bash(python *)",
       "WebFetch(domain:docs.redhat.com)",
       "WebFetch(domain:docs.ansible.com)",
-      "Bash(xargs sed -i 's/ansible-sage/ansible-ai-gateway/g')",
-      "Bash(xargs sed -i 's/from ansible_ai_gateway/from ansible_ai_gateway/g')",
-      "Bash(git *)"
+      "Bash(xargs sed -i 's/ansible-sage/ansible-maya/g')",
+      "Bash(xargs sed -i 's/from ansible_maya/from ansible_maya/g')",
+      "Bash(git *)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(gh repo *)",
+      "Bash(gh api *)",
+      "Bash(cat)",
+      "Read(//tmp/**)"
     ]
   }
 }

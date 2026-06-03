@@ -1,12 +1,12 @@
-# Ansible AI Gateway Examples
+# Ansible Maya Examples
 
-This directory contains examples demonstrating how to use Ansible AI Gateway for event-driven playbook generation.
+This directory contains examples demonstrating how to use Ansible Maya for event-driven playbook generation.
 
 ## Prerequisites
 
-1. **Install Ansible AI Gateway**:
+1. **Install Ansible Maya**:
    ```bash
-   cd /path/to/ansible-ai-gateway
+   cd /path/to/ansible-maya
    pip install -e .
    ```
 
@@ -68,7 +68,7 @@ make run
 Generate a playbook for a disk full event:
 
 ```bash
-ansible-ai-gateway generate \
+ansible-maya generate \
   --event-type disk_full \
   --description "Disk usage at 95% on /var" \
   --host web-server-01 \
@@ -79,27 +79,27 @@ ansible-ai-gateway generate \
 Validate an existing playbook:
 
 ```bash
-ansible-ai-gateway validate playbook.yml --fix
+ansible-maya validate playbook.yml --fix
 ```
 
 List supported event types:
 
 ```bash
-ansible-ai-gateway list-events
+ansible-maya list-events
 ```
 
 Start the API server:
 
 ```bash
-ansible-ai-gateway serve --host 0.0.0.0 --port 8000 --reload
+ansible-maya serve --host 0.0.0.0 --port 8000 --reload
 ```
 
 ### Python API
 
 ```python
 import asyncio
-from ansible_ai_gateway.core.providers import get_provider
-from ansible_ai_gateway.handlers.orchestrator import handle_infrastructure_event, EventSeverity
+from ansible_maya.core.providers import get_provider
+from ansible_maya.handlers.orchestrator import handle_infrastructure_event, EventSeverity
 
 async def main():
     # Get LLM provider
@@ -215,7 +215,7 @@ make run
 
 **Error: Module not found**
 
-Install Ansible AI Gateway:
+Install Ansible Maya:
 ```bash
 pip install -e .
 ```

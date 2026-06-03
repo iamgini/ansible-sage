@@ -168,7 +168,7 @@ CHANGELOG.md                       # Document new feature (update)
 
 ```python
 from openai import AsyncOpenAI, APIError, RateLimitError
-from ansible_ai_gateway.core.providers.base import (
+from ansible_maya.core.providers.base import (
     BaseLLMProvider, GenerationRequest, GenerationResponse, 
     ModelTier, ProviderStatus
 )
@@ -288,7 +288,7 @@ async def generate_playbook(
     model = self.MODEL_MAPPING.get(request.model_tier, self.default_model)
     
     # Build messages
-    from ansible_ai_gateway.core.prompt_templates import get_system_prompt, get_event_prompt
+    from ansible_maya.core.prompt_templates import get_system_prompt, get_event_prompt
     
     system_prompt = get_system_prompt()
     user_prompt = get_event_prompt(
@@ -364,7 +364,7 @@ async def generate_playbook(
 **File**: `sage/core/providers/__init__.py`
 
 ```python
-from ansible_ai_gateway.core.providers.openai import OpenAIProvider  # Add import
+from ansible_maya.core.providers.openai import OpenAIProvider  # Add import
 
 PROVIDERS = {
     "claude": ClaudeProvider,
@@ -409,8 +409,8 @@ OPENAI_ORG_ID=org-your-org-id  # Optional organization ID
 ```python
 import pytest
 from unittest.mock import AsyncMock, Mock, patch
-from ansible_ai_gateway.core.providers.openai import OpenAIProvider
-from ansible_ai_gateway.core.providers.base import GenerationRequest, ModelTier
+from ansible_maya.core.providers.openai import OpenAIProvider
+from ansible_maya.core.providers.base import GenerationRequest, ModelTier
 
 @pytest.fixture
 def openai_provider():
@@ -500,8 +500,8 @@ class TestOpenAIProvider:
 ```python
 import os
 import pytest
-from ansible_ai_gateway.core.providers import get_provider
-from ansible_ai_gateway.core.providers.base import GenerationRequest, ModelTier
+from ansible_maya.core.providers import get_provider
+from ansible_maya.core.providers.base import GenerationRequest, ModelTier
 
 @pytest.mark.integration
 @pytest.mark.skipif(
@@ -567,13 +567,13 @@ import asyncio
 import os
 from datetime import datetime
 
-from ansible_ai_gateway.core.providers import get_provider
-from ansible_ai_gateway.handlers.orchestrator import AIOpsEvent, EventSeverity, PlaybookOrchestrator
+from ansible_maya.core.providers import get_provider
+from ansible_maya.handlers.orchestrator import AIOpsEvent, EventSeverity, PlaybookOrchestrator
 
 
 async def main():
     print("=" * 70)
-    print("Ansible AI Gateway - OpenAI Provider Example")
+    print("Ansible Maya - OpenAI Provider Example")
     print("=" * 70)
     
     # 1. Configure OpenAI Provider
@@ -694,7 +694,7 @@ OPENAI_MODEL=gpt-4o  # Optional: gpt-4o, gpt-4-turbo, gpt-3.5-turbo
 
 ### Error Mapping
 
-| OpenAI Error | Ansible AI Gateway Exception | HTTP Status |
+| OpenAI Error | Ansible Maya Exception | HTTP Status |
 |-------------|----------------------|-------------|
 | 401 Unauthorized | `LLMAuthenticationError` | 500 |
 | 429 Rate Limit | `LLMRateLimitError` | 429 |

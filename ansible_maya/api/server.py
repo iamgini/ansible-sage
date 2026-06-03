@@ -19,7 +19,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
 # Version info
-from ansible_ai_gateway import __version__
+from ansible_maya import __version__
 
 # Create FastAPI app
 app = FastAPI(
@@ -81,7 +81,7 @@ async def readiness_check() -> JSONResponse:
 
 
 # API routes
-from ansible_ai_gateway.api.routes import events
+from ansible_maya.api.routes import events
 
 app.include_router(events.router, prefix="/api/v1/events", tags=["events"])
 

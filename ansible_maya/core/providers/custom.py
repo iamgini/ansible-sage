@@ -13,7 +13,7 @@ from typing import Optional
 
 from openai import AsyncOpenAI
 
-from ansible_ai_gateway.core.providers.base import (
+from ansible_maya.core.providers.base import (
     BaseLLMProvider,
     GenerationRequest,
     GenerationResponse,
@@ -76,7 +76,7 @@ class CustomProvider(BaseLLMProvider):
             Generation response with playbook content
         """
         import time
-        from ansible_ai_gateway.core.prompt_templates import get_system_prompt, get_event_prompt
+        from ansible_maya.core.prompt_templates import get_system_prompt, get_event_prompt
 
         start_time = time.time()
 

@@ -1,4 +1,4 @@
-# Rename Complete: ansible-sage → ansible-ai-gateway
+# Rename Complete: ansible-sage → ansible-maya
 
 **Date**: 2026-06-02  
 **Status**: ✅ Complete
@@ -7,20 +7,20 @@
 
 ## Summary
 
-Successfully renamed project from **Ansible Sage** to **Ansible AI Gateway** following Ansible naming conventions (`ansible-<function>`).
+Successfully renamed project from **Ansible Sage** to **Ansible Maya** following Ansible naming conventions (`ansible-<function>`).
 
 ---
 
 ## Changes Made
 
 ### 1. Python Package
-- ✅ Renamed directory: `sage/` → `ansible_ai_gateway/`
-- ✅ Updated all imports: `from sage.` → `from ansible_ai_gateway.`
+- ✅ Renamed directory: `sage/` → `ansible_maya/`
+- ✅ Updated all imports: `from sage.` → `from ansible_maya.`
 - ✅ Updated package name in `pyproject.toml`
 
 ### 2. CLI Command
 - ✅ Old: `ansible-sage` or `sage`
-- ✅ New: `ansible-ai-gateway`
+- ✅ New: `ansible-maya`
 - ✅ Entry point updated in `pyproject.toml`
 
 ### 3. Documentation
@@ -56,12 +56,12 @@ Successfully renamed project from **Ansible Sage** to **Ansible AI Gateway** fol
 ### 1. Rename GitHub Repository
 ```bash
 # On GitHub:
-# Settings → Repository name → ansible-ai-gateway
+# Settings → Repository name → ansible-maya
 ```
 
 ### 2. Update Git Remote (if needed)
 ```bash
-git remote set-url origin git@github.com:your-org/ansible-ai-gateway.git
+git remote set-url origin git@github.com:your-org/ansible-maya.git
 ```
 
 ### 3. Reinstall Package
@@ -73,7 +73,7 @@ pip uninstall ansible-sage
 pip install -e .
 
 # Verify
-ansible-ai-gateway --help
+ansible-maya --help
 ```
 
 ### 4. Update CI/CD
@@ -94,16 +94,16 @@ Run these commands to verify the rename:
 
 ```bash
 # 1. Check no references to old name in Python files
-grep -r "from sage\." ansible_ai_gateway/ tests/
+grep -r "from sage\." ansible_maya/ tests/
 # Should return nothing
 
 # 2. Check imports work
-python -c "from ansible_ai_gateway.core.prompt_templates import get_system_prompt; print('✓ Imports work')"
+python -c "from ansible_maya.core.prompt_templates import get_system_prompt; print('✓ Imports work')"
 
 # 3. Check CLI command
-python -m ansible_ai_gateway.cli --version
+python -m ansible_maya.cli --version
 # or after pip install -e .:
-ansible-ai-gateway --version
+ansible-maya --version
 
 # 4. Run tests
 pytest tests/ -v
@@ -136,7 +136,7 @@ python test-scripts/test_session_context.py
 - `pyproject.toml` - Package metadata
 - `README.md` - Main documentation
 - `CLAUDE.md` - AI assistant instructions  
-- `ansible_ai_gateway/` - Entire Python package renamed
+- `ansible_maya/` - Entire Python package renamed
 - All test files and scripts
 - All markdown documentation
 - Docker and config files

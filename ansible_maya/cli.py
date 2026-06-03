@@ -22,9 +22,9 @@ from pathlib import Path
 
 import click
 
-from ansible_ai_gateway import __version__
-from ansible_ai_gateway.core.providers import get_provider
-from ansible_ai_gateway.handlers.orchestrator import (
+from ansible_maya import __version__
+from ansible_maya.core.providers import get_provider
+from ansible_maya.handlers.orchestrator import (
     AIOpsEvent,
     EventSeverity,
     PlaybookOrchestrator,
@@ -195,7 +195,7 @@ def serve(host, port, reload):
     click.echo(f"📚 API docs: http://{host}:{port}/docs")
 
     uvicorn.run(
-        "ansible_ai_gateway.api.server:app",
+        "ansible_maya.api.server:app",
         host=host,
         port=port,
         reload=reload,
@@ -211,7 +211,7 @@ def validate(playbook_file, fix, strict):
     """Validate an Ansible playbook with ansible-lint."""
 
     async def _validate():
-        from ansible_ai_gateway.validation.ansible_lint import validate_playbook
+        from ansible_maya.validation.ansible_lint import validate_playbook
 
         playbook_path = Path(playbook_file)
         content = playbook_path.read_text()

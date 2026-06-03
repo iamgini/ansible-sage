@@ -3,8 +3,8 @@
 
 """Core business logic for Ansible Sage."""
 
-from ansible_ai_gateway.core.ansible_context import AnsibleContextProcessor, AnsibleFileType
-from ansible_ai_gateway.core.exceptions import (
+from ansible_maya.core.ansible_context import AnsibleContextProcessor, AnsibleFileType
+from ansible_maya.core.exceptions import (
     AnsibleLintError,
     ConfigurationError,
     EventClassificationError,
@@ -12,7 +12,7 @@ from ansible_ai_gateway.core.exceptions import (
     PlaybookGenerationError,
     ValidationError,
 )
-from ansible_ai_gateway.core.providers import (
+from ansible_maya.core.providers import (
     BaseLLMProvider,
     ClaudeProvider,
     GenerationRequest,
@@ -20,7 +20,7 @@ from ansible_ai_gateway.core.providers import (
     ModelTier,
     get_provider,
 )
-from ansible_ai_gateway.core.prompt_templates import get_event_prompt, get_system_prompt
+from ansible_maya.core.prompt_templates import get_event_prompt, get_system_prompt
 
 __all__ = [
     # Context processing

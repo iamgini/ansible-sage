@@ -86,7 +86,7 @@ pre-commit: ## Run pre-commit hooks on all files
 # ============================================================================
 
 docker-build: ## Build Docker image
-	docker build -t ansible-ai-gateway:latest .
+	docker build -t ansible-maya:latest .
 
 docker-up: ## Start all services with docker-compose
 	docker-compose up -d
@@ -97,17 +97,17 @@ docker-down: ## Stop all services
 docker-logs: ## Show logs from all containers
 	docker-compose logs -f
 
-docker-restart: ## Restart the ansible-ai-gateway service
-	docker-compose restart ansible-ai-gateway
+docker-restart: ## Restart the ansible-maya service
+	docker-compose restart ansible-maya
 
 docker-rebuild: ## Rebuild and restart services
 	docker-compose up -d --build
 
-docker-shell: ## Open shell in ansible-ai-gateway container
-	docker-compose exec ansible-ai-gateway bash
+docker-shell: ## Open shell in ansible-maya container
+	docker-compose exec ansible-maya bash
 
 docker-test: ## Run tests in Docker container
-	docker-compose exec ansible-ai-gateway pytest
+	docker-compose exec ansible-maya pytest
 
 # ============================================================================
 # Database

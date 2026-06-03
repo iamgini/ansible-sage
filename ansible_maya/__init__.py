@@ -22,6 +22,6 @@ __version__ = "0.1.0"
 __author__ = "Ansible AI Gateway Contributors"
 __license__ = "Apache-2.0"
 
-from ansible_ai_gateway.core import AnsibleContextProcessor
+from ansible_maya.core import AnsibleContextProcessor
 
 __all__ = ["__version__", "AnsibleContextProcessor"]

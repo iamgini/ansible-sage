@@ -275,7 +275,7 @@ The LLM understands tasks are related and generates:
 - Maintains task sequence
 
 ### Differences
-| Feature | Lightspeed | Ansible AI Gateway |
+| Feature | Lightspeed | Ansible Maya |
 |---------|-----------|--------------|
 | **Input** | YAML comment | Event description |
 | **Context** | Current file | Event metadata |
@@ -342,8 +342,8 @@ Sage adds:
 
 ### API Request
 ```python
-from ansible_ai_gateway.core.providers.claude import ClaudeProvider
-from ansible_ai_gateway.core.providers.base import GenerationRequest
+from ansible_maya.core.providers.claude import ClaudeProvider
+from ansible_maya.core.providers.base import GenerationRequest
 
 provider = ClaudeProvider()
 

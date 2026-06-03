@@ -50,7 +50,7 @@ python -c "from openai import AsyncOpenAI; print('✓ OpenAI SDK installed')"
 
 ```python
 from openai import AsyncOpenAI, APIError, RateLimitError
-from ansible_ai_gateway.core.providers.base import BaseLLMProvider, ...
+from ansible_maya.core.providers.base import BaseLLMProvider, ...
 
 class OpenAIProvider(BaseLLMProvider):
     """OpenAI GPT provider for Ansible playbook generation."""
@@ -76,7 +76,7 @@ class OpenAIProvider(BaseLLMProvider):
 
 ### Verification
 ```python
-from ansible_ai_gateway.core.providers.openai import OpenAIProvider
+from ansible_maya.core.providers.openai import OpenAIProvider
 provider = OpenAIProvider(config={"api_key": "sk-test"})
 assert provider.name == "openai"
 print("✓ Class structure created")
@@ -233,7 +233,7 @@ async def generate_playbook(
     model = self.MODEL_MAPPING.get(request.model_tier, self.default_model)
     
     # Build prompts
-    from ansible_ai_gateway.core.prompt_templates import get_system_prompt, get_event_prompt
+    from ansible_maya.core.prompt_templates import get_system_prompt, get_event_prompt
     
     system_prompt = get_system_prompt()
     
@@ -375,7 +375,7 @@ print("✓ API call implemented")
 
 ```python
 # sage/core/providers/__init__.py
-from ansible_ai_gateway.core.providers.openai import OpenAIProvider  # Add this
+from ansible_maya.core.providers.openai import OpenAIProvider  # Add this
 
 PROVIDERS = {
     "claude": ClaudeProvider,
@@ -390,7 +390,7 @@ PROVIDERS = {
 
 ### Verification
 ```python
-from ansible_ai_gateway.core.providers import get_provider
+from ansible_maya.core.providers import get_provider
 
 provider = get_provider("openai", config={"api_key": "sk-test"})
 assert provider.name == "openai"
@@ -464,8 +464,8 @@ grep -A 5 "OpenAI" .env.example
 ```python
 import pytest
 from unittest.mock import Mock, patch, AsyncMock
-from ansible_ai_gateway.core.providers.openai import OpenAIProvider
-from ansible_ai_gateway.core.providers.base import GenerationRequest, ModelTier
+from ansible_maya.core.providers.openai import OpenAIProvider
+from ansible_maya.core.providers.base import GenerationRequest, ModelTier
 
 @pytest.fixture
 def openai_provider():
@@ -528,8 +528,8 @@ pytest tests/unit/providers/test_openai.py -v
 ```python
 import os
 import pytest
-from ansible_ai_gateway.core.providers import get_provider
-from ansible_ai_gateway.core.providers.base import GenerationRequest, ModelTier
+from ansible_maya.core.providers import get_provider
+from ansible_maya.core.providers.base import GenerationRequest, ModelTier
 
 @pytest.mark.integration
 @pytest.mark.skipif(
@@ -600,8 +600,8 @@ pytest tests/integration/test_openai_integration.py -v -s
 
 import asyncio
 import os
-from ansible_ai_gateway.core.providers import get_provider
-from ansible_ai_gateway.handlers.orchestrator import AIOpsEvent, PlaybookOrchestrator
+from ansible_maya.core.providers import get_provider
+from ansible_maya.handlers.orchestrator import AIOpsEvent, PlaybookOrchestrator
 
 async def main():
     # 1. Configure provider

@@ -1,6 +1,6 @@
-# Ansible AI Gateway - Quick Start Guide
+# Ansible Maya - Quick Start Guide
 
-Get started with Ansible AI Gateway in 5 minutes!
+Get started with Ansible Maya in 5 minutes!
 
 ## Prerequisites
 
@@ -14,7 +14,7 @@ Get started with Ansible AI Gateway in 5 minutes!
 
 ```bash
 # Clone or navigate to the repository
-cd /path/to/ansible-ai-gateway
+cd /path/to/ansible-maya
 
 # Create virtual environment
 python3 -m venv venv
@@ -32,7 +32,7 @@ cp .env.example .env
 ### Option 2: Docker (Recommended)
 
 ```bash
-cd /path/to/ansible-ai-gateway
+cd /path/to/ansible-maya
 
 # Configure environment
 cp .env.example .env
@@ -42,7 +42,7 @@ cp .env.example .env
 docker-compose up -d
 
 # Check logs
-docker-compose logs -f ansible-ai-gateway
+docker-compose logs -f ansible-maya
 ```
 
 ## Quick Examples
@@ -51,7 +51,7 @@ docker-compose logs -f ansible-ai-gateway
 
 ```bash
 # Simple disk cleanup playbook
-ansible-ai-gateway generate \
+ansible-maya generate \
   --event-type disk_full \
   --description "Disk usage at 95% on /var partition" \
   --host web-server-01 \
@@ -62,15 +62,15 @@ ansible-ai-gateway generate \
 cat cleanup.yml
 
 # Validate it
-ansible-ai-gateway validate cleanup.yml
+ansible-maya validate cleanup.yml
 ```
 
 ### 2. Python API
 
 ```python
 import asyncio
-from ansible_ai_gateway.core.providers import get_provider
-from ansible_ai_gateway.handlers.orchestrator import handle_infrastructure_event, EventSeverity
+from ansible_maya.core.providers import get_provider
+from ansible_maya.handlers.orchestrator import handle_infrastructure_event, EventSeverity
 
 async def main():
     # Initialize provider
@@ -99,7 +99,7 @@ asyncio.run(main())
 
 ```bash
 # Start the API server
-ansible-ai-gateway serve
+ansible-maya serve
 
 # In another terminal, generate a playbook
 curl -X POST http://localhost:8000/api/v1/events/generate \
@@ -123,7 +123,7 @@ open http://localhost:8000/docs
 
 ### Disk Issues
 ```bash
-ansible-ai-gateway generate \
+ansible-maya generate \
   --event-type disk_full \
   --description "Disk at 95% on /var, logs consuming space" \
   --host db-server-01 \
@@ -132,7 +132,7 @@ ansible-ai-gateway generate \
 
 ### Service Management
 ```bash
-ansible-ai-gateway generate \
+ansible-maya generate \
   --event-type service_down \
   --description "Apache httpd service stopped unexpectedly" \
   --host web-server-02 \
@@ -141,7 +141,7 @@ ansible-ai-gateway generate \
 
 ### Resource Alerts
 ```bash
-ansible-ai-gateway generate \
+ansible-maya generate \
   --event-type high_cpu \
   --description "CPU usage at 98% for 10 minutes" \
   --host app-server-01 \
@@ -150,7 +150,7 @@ ansible-ai-gateway generate \
 
 ### Memory Issues
 ```bash
-ansible-ai-gateway generate \
+ansible-maya generate \
   --event-type high_memory \
   --description "Memory usage at 92%, swap heavily used" \
   --host cache-server-01 \
@@ -174,18 +174,18 @@ make test-cov
 ### Validate a Generated Playbook
 ```bash
 # Generate and validate in one go
-ansible-ai-gateway generate \
+ansible-maya generate \
   --event-type disk_cleanup_tmp \
   --description "Clean /tmp directory" \
   --host localhost \
   --output test.yml && \
-ansible-ai-gateway validate test.yml --fix
+ansible-maya validate test.yml --fix
 ```
 
 ## Project Structure
 
 ```
-ansible-ai-gateway/
+ansible-maya/
 ├── sage/                      # Main package
 │   ├── core/                  # Core business logic
 │   │   ├── providers/         # LLM providers (Claude, OpenAI, etc.)
@@ -240,7 +240,7 @@ pip install ansible-lint
 lsof -i :8000
 
 # Use different port
-ansible-ai-gateway serve --port 8080
+ansible-maya serve --port 8080
 ```
 
 ## Getting Help

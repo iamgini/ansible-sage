@@ -14,15 +14,15 @@
 
 """LLM Provider package - supports multiple AI model providers."""
 
-from ansible_ai_gateway.core.providers.base import (
+from ansible_maya.core.providers.base import (
     BaseLLMProvider,
     GenerationRequest,
     GenerationResponse,
     ModelTier,
     ProviderStatus,
 )
-from ansible_ai_gateway.core.providers.claude import ClaudeProvider
-from ansible_ai_gateway.core.providers.custom import CustomProvider
+from ansible_maya.core.providers.claude import ClaudeProvider
+from ansible_maya.core.providers.custom import CustomProvider
 
 __all__ = [
     "BaseLLMProvider",

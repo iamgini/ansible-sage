@@ -1,11 +1,11 @@
-# Ansible AI Gateway Prompt Engineering Analysis
+# Ansible Maya Prompt Engineering Analysis
 
 **Date**: 2026-06-02  
-**Analysis Focus**: Comparing Ansible AI Gateway prompting with industry best practices from Ansible Lightspeed
+**Analysis Focus**: Comparing Ansible Maya prompting with industry best practices from Ansible Lightspeed
 
 ---
 
-## Current State: Ansible AI Gateway Prompting
+## Current State: Ansible Maya Prompting
 
 ### Strengths
 

@@ -23,7 +23,7 @@ from typing import List, Optional
 
 import yaml
 
-from ansible_ai_gateway.core.exceptions import AnsibleLintError, YAMLValidationError
+from ansible_maya.core.exceptions import AnsibleLintError, YAMLValidationError
 
 
 @dataclass

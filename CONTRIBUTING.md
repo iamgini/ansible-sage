@@ -1,6 +1,6 @@
-# Contributing to Ansible AI Gateway
+# Contributing to Ansible Maya
 
-First off, thank you for considering contributing to Ansible AI Gateway! It's people like you that make Ansible AI Gateway such a great tool.
+First off, thank you for considering contributing to Ansible Maya! It's people like you that make Ansible Maya such a great tool.
 
 ## Code of Conduct
 
@@ -66,11 +66,11 @@ Enhancement suggestions are tracked as GitHub issues. When creating an enhanceme
 
 ```bash
 # Clone your fork
-git clone https://github.com/YOUR_USERNAME/ansible-ai-gateway.git
-cd ansible-ai-gateway
+git clone https://github.com/YOUR_USERNAME/ansible-maya.git
+cd ansible-maya
 
 # Add upstream remote
-git remote add upstream https://github.com/your-org/ansible-ai-gateway.git
+git remote add upstream https://github.com/your-org/ansible-maya.git
 
 # Create virtual environment
 python3.11 -m venv venv
@@ -202,7 +202,7 @@ pre-commit run --all-files
 ## Project Structure
 
 ```
-ansible-ai-gateway/
+ansible-maya/
 ├── sage/                       # Main application package
 │   ├── core/                   # Core business logic
 │   │   ├── ansible_context.py  # Ansible-specific prompt engineering
@@ -248,8 +248,8 @@ ansible-ai-gateway/
 
 2. **Implement provider class:**
    ```python
-   from ansible_ai_gateway.core.providers.base import BaseLLMProvider
-   from ansible_ai_gateway.core.schemas import GenerationRequest, GenerationResponse
+   from ansible_maya.core.providers.base import BaseLLMProvider
+   from ansible_maya.core.schemas import GenerationRequest, GenerationResponse
    
    class NewProvider(BaseLLMProvider):
        name = "newprovider"
@@ -274,7 +274,7 @@ ansible-ai-gateway/
 3. **Register provider:**
    ```python
    # sage/core/providers/__init__.py
-   from ansible_ai_gateway.core.providers.newprovider import NewProvider
+   from ansible_maya.core.providers.newprovider import NewProvider
    
    PROVIDERS = {
        "claude": ClaudeProvider,
@@ -298,7 +298,7 @@ ansible-ai-gateway/
    ```python
    # tests/unit/providers/test_newprovider.py
    import pytest
-   from ansible_ai_gateway.core.providers.newprovider import NewProvider
+   from ansible_maya.core.providers.newprovider import NewProvider
    
    @pytest.mark.asyncio
    async def test_newprovider_generation():
@@ -334,7 +334,7 @@ ansible-ai-gateway/
 ```python
 import pytest
 from unittest.mock import Mock, patch
-from ansible_ai_gateway.core.ansible_context import AnsibleContextProcessor
+from ansible_maya.core.ansible_context import AnsibleContextProcessor
 
 class TestAnsibleContextProcessor:
     def test_is_multi_task_prompt_with_multiple_tasks(self):
@@ -448,9 +448,9 @@ Maintainers will handle releases, but here's the process:
 
 ## Questions?
 
-- **General questions**: Open a [GitHub Discussion](https://github.com/your-org/ansible-ai-gateway/discussions)
-- **Bug reports**: Open an [Issue](https://github.com/your-org/ansible-ai-gateway/issues)
-- **Feature requests**: Open an [Issue](https://github.com/your-org/ansible-ai-gateway/issues) with `enhancement` label
+- **General questions**: Open a [GitHub Discussion](https://github.com/your-org/ansible-maya/discussions)
+- **Bug reports**: Open an [Issue](https://github.com/your-org/ansible-maya/issues)
+- **Feature requests**: Open an [Issue](https://github.com/your-org/ansible-maya/issues) with `enhancement` label
 - **Security issues**: Email security@your-domain.com (do NOT open public issue)
 
 ## License
@@ -459,4 +459,4 @@ By contributing, you agree that your contributions will be licensed under the Ap
 
 ---
 
-**Thank you for contributing to Ansible AI Gateway!** 🙏
+**Thank you for contributing to Ansible Maya!** 🙏

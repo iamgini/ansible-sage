@@ -7,7 +7,7 @@
 
 ## Executive Summary
 
-Enhanced Ansible AI Gateway's prompt engineering to match and exceed industry best practices from Ansible Lightspeed, resulting in significant improvements in playbook generation quality, consistency, and environmental adaptability.
+Enhanced Ansible Maya's prompt engineering to match and exceed industry best practices from Ansible Lightspeed, resulting in significant improvements in playbook generation quality, consistency, and environmental adaptability.
 
 ---
 
@@ -256,7 +256,7 @@ All improvements have comprehensive tests:
 
 ## Comparison with Ansible Lightspeed
 
-| Feature | Lightspeed | Ansible AI Gateway | Status |
+| Feature | Lightspeed | Ansible Maya | Status |
 |---------|-----------|--------------|---------|
 | Few-shot examples | ✅ | ✅ | **On par** |
 | Multi-task chaining | ✅ | ✅ | **On par** |
@@ -267,7 +267,7 @@ All improvements have comprehensive tests:
 | General-purpose prompts | ✅ | ✅ | **On par** |
 | FQCN enforcement | ✅ | ✅ | **On par** |
 
-**Overall**: Ansible AI Gateway now **matches or exceeds** Lightspeed prompt engineering
+**Overall**: Ansible Maya now **matches or exceeds** Lightspeed prompt engineering
 
 ---
 
@@ -327,7 +327,7 @@ Could add exact commands to prompts:
 
 **Session Context**:
 ```python
-from ansible_ai_gateway.core.session_context import get_session_context
+from ansible_maya.core.session_context import get_session_context
 
 session = get_session_context()
 stats = session.get_stats()
@@ -335,7 +335,7 @@ stats = session.get_stats()
 
 **Temperature Override**:
 ```python
-from ansible_ai_gateway.core.prompt_templates import get_optimal_temperature
+from ansible_maya.core.prompt_templates import get_optimal_temperature
 
 temp = get_optimal_temperature("disk_full")  # 0.2
 temp_custom = get_optimal_temperature("disk_full", is_refinement=True)  # 0.14
@@ -343,7 +343,7 @@ temp_custom = get_optimal_temperature("disk_full", is_refinement=True)  # 0.14
 
 **Multi-Task Detection**:
 ```python
-from ansible_ai_gateway.core.prompt_templates import is_multi_task_prompt
+from ansible_maya.core.prompt_templates import is_multi_task_prompt
 
 is_multi = is_multi_task_prompt("Install nginx & Start service")  # True
 ```
@@ -352,7 +352,7 @@ is_multi = is_multi_task_prompt("Install nginx & Start service")  # True
 
 ## Conclusion
 
-**Mission Accomplished**: Ansible AI Gateway now implements industry-leading prompt engineering
+**Mission Accomplished**: Ansible Maya now implements industry-leading prompt engineering
 
 ✅ **5 major improvements** implemented  
 ✅ **All tests passing**  

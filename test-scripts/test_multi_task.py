@@ -4,10 +4,10 @@
 import sys
 from pathlib import Path
 
-# Add ansible_ai_gateway to path
+# Add ansible_maya to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from ansible_ai_gateway.core.prompt_templates import (
+from ansible_maya.core.prompt_templates import (
     parse_multi_task_prompt,
     format_multi_task_prompt,
     is_multi_task_prompt,

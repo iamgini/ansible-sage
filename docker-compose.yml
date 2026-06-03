@@ -5,14 +5,14 @@ version: '3.8'
 
 services:
   # ============================================================================
-  # Ansible Sage - Main Application
+  # Ansible Maya - Main Application
   # ============================================================================
-  ansible-ai-gateway:
+  ansible-maya:
     build:
       context: .
       dockerfile: Dockerfile
-    image: ansible-ai-gateway:latest
-    container_name: ansible-ai-gateway
+    image: ansible-maya:latest
+    container_name: ansible-maya
     restart: unless-stopped
     ports:
       - "8000:8000"
@@ -70,7 +70,7 @@ services:
   # ============================================================================
   postgres:
     image: postgres:16-alpine
-    container_name: ansible-ai-gateway-postgres
+    container_name: ansible-maya-postgres
     restart: unless-stopped
     environment:
       - POSTGRES_DB=ansible_sage
@@ -95,7 +95,7 @@ services:
   # ============================================================================
   redis:
     image: redis:7-alpine
-    container_name: ansible-ai-gateway-redis
+    container_name: ansible-maya-redis
     restart: unless-stopped
     command: redis-server --appendonly yes
 
@@ -116,7 +116,7 @@ services:
   # ============================================================================
   ollama:
     image: ollama/ollama:latest
-    container_name: ansible-ai-gateway-ollama
+    container_name: ansible-maya-ollama
     restart: unless-stopped
     profiles:
       - local-llm  # Only start with: docker-compose --profile local-llm up
@@ -144,7 +144,7 @@ services:
   # ============================================================================
   prometheus:
     image: prom/prometheus:latest
-    container_name: ansible-ai-gateway-prometheus
+    container_name: ansible-maya-prometheus
     restart: unless-stopped
     profiles:
       - monitoring
@@ -168,7 +168,7 @@ services:
   # ============================================================================
   grafana:
     image: grafana/grafana:latest
-    container_name: ansible-ai-gateway-grafana
+    container_name: ansible-maya-grafana
     restart: unless-stopped
     profiles:
       - monitoring

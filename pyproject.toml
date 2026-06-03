@@ -3,14 +3,14 @@ requires = ["setuptools>=68.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "ansible-ai-gateway"
+name = "ansible-maya"
 version = "0.1.0"
-description = "Multi-provider AI gateway for Ansible playbook generation - Supports watsonx, Claude, OpenAI, Ollama, and custom LLM providers"
+description = "AI-powered Ansible playbook generator with validation and best practices - माया (maya): creative power"
 readme = "README.md"
 requires-python = ">=3.11"
 license = {text = "Apache-2.0"}
 authors = [
-    {name = "Ansible AI Gateway Contributors"}
+    {name = "Ansible Maya Contributors"}
 ]
 keywords = [
     "ansible",
@@ -62,17 +62,17 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/your-org/ansible-ai-gateway"
-Documentation = "https://ansible-ai-gateway.readthedocs.io"
-Repository = "https://github.com/your-org/ansible-ai-gateway"
-Issues = "https://github.com/your-org/ansible-ai-gateway/issues"
+Homepage = "https://github.com/your-org/ansible-maya"
+Documentation = "https://ansible-maya.readthedocs.io"
+Repository = "https://github.com/your-org/ansible-maya"
+Issues = "https://github.com/your-org/ansible-maya/issues"
 
 [project.scripts]
-ansible-ai-gateway = "ansible_ai_gateway.cli:main"
+ansible-maya = "ansible_maya.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["ansible_ai_gateway*"]
+include = ["ansible_maya*"]
 exclude = ["tests*", "docs*"]
 
 [tool.black]
@@ -172,7 +172,7 @@ asyncio_mode = "auto"
 asyncio_default_fixture_loop_scope = "function"
 
 [tool.coverage.run]
-source = ["ansible_ai_gateway"]
+source = ["ansible_maya"]
 omit = [
     "*/tests/*",
     "*/test_*.py",

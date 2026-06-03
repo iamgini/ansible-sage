@@ -148,12 +148,12 @@ if request.host:
 
 ```python
 # Get global session (in-memory)
-from ansible_ai_gateway.core.session_context import get_session_context
+from ansible_maya.core.session_context import get_session_context
 
 session = get_session_context()
 
 # Reset session
-from ansible_ai_gateway.core.session_context import reset_session_context
+from ansible_maya.core.session_context import reset_session_context
 reset_session_context()
 ```
 

@@ -27,8 +27,8 @@ import asyncio
 import os
 from datetime import datetime
 
-from ansible_ai_gateway.core.providers import get_provider
-from ansible_ai_gateway.handlers.orchestrator import AIOpsEvent, EventSeverity, PlaybookOrchestrator
+from ansible_maya.core.providers import get_provider
+from ansible_maya.handlers.orchestrator import AIOpsEvent, EventSeverity, PlaybookOrchestrator
 
 
 async def main():

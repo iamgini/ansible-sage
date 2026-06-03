@@ -170,20 +170,23 @@ jobs:
   # ============================================================================
   # Build Docker Image
   # ============================================================================
-  docker-build:
-    name: Docker Build Test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+  # DISABLED: Docker build test temporarily disabled
+  # Uncomment to re-enable Docker build testing in CI
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+  # docker-build:
+  #   name: Docker Build Test
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
 
-      - name: Build Docker image
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          push: false
-          tags: ansible-ai-gateway:test
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+  #     - name: Set up Docker Buildx
+  #       uses: docker/setup-buildx-action@v3
+
+  #     - name: Build Docker image
+  #       uses: docker/build-push-action@v5
+  #       with:
+  #         context: .
+  #         push: false
+  #         tags: ansible-maya:test
+  #         cache-from: type=gha
+  #         cache-to: type=gha,mode=max

@@ -1,10 +1,10 @@
-# Ansible AI Gateway Test Scripts
+# Ansible Maya Test Scripts
 
-Collection of test scripts to demonstrate Ansible AI Gateway playbook generation capabilities.
+Collection of test scripts to demonstrate Ansible Maya playbook generation capabilities.
 
 ## Prerequisites
 
-- Ansible AI Gateway container running: `podman ps | grep ansible-ai-gateway`
+- Ansible Maya container running: `podman ps | grep ansible-maya`
 - API accessible on http://localhost:8000
 - Python 3 with json module
 
@@ -126,9 +126,9 @@ Edit any test script to modify:
 
 **Container not running:**
 ```bash
-podman ps | grep ansible-ai-gateway
+podman ps | grep ansible-maya
 # If not running:
-podman start ansible-ai-gateway
+podman start ansible-maya
 ```
 
 **API not responding:**
@@ -138,7 +138,7 @@ curl http://localhost:8000/health
 
 **View container logs:**
 ```bash
-podman logs ansible-ai-gateway
+podman logs ansible-maya
 ```
 
 **Clean up old playbooks:**
@@ -184,6 +184,6 @@ curl -X POST http://localhost:8000/api/v1/events/publish-to-aap \
 ## Support
 
 For issues or questions:
-- Check container logs: `podman logs ansible-ai-gateway-demo`
+- Check container logs: `podman logs ansible-maya-demo`
 - Verify API health: `curl http://localhost:8000/health`
-- Review main README: `/home/gmadappa/ansible/ansible-ai-gateway/README.md`
+- Review main README: `/home/gmadappa/ansible/ansible-maya/README.md`

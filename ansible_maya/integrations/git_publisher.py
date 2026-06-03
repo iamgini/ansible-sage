@@ -197,7 +197,7 @@ class GitPublisher:
 
     async def _prepare_repo(self) -> None:
         """Clone or update the repository."""
-        self.working_dir = Path(tempfile.mkdtemp(prefix="ansible-ai-gateway-git-"))
+        self.working_dir = Path(tempfile.mkdtemp(prefix="ansible-maya-git-"))
 
         # Build clone command
         repo_url = self._get_authenticated_url()

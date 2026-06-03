@@ -1,10 +1,10 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code when working with the Ansible AI Gateway codebase.
+This file provides guidance to Claude Code when working with the Ansible Maya codebase.
 
 ## Project Overview
 
-**Ansible AI Gateway** is an AI-powered event-driven playbook generation service for AIOps workflows. It automatically generates, validates, tests, and executes Ansible playbooks in response to infrastructure events.
+**Ansible Maya** (माया - "creative power") is an AI-powered Ansible playbook generator with built-in validation and best practices. It generates production-ready playbooks using LLMs, validates them with ansible-lint, and ensures quality through automated testing.
 
 ### Core Components
 
@@ -67,8 +67,8 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
 # Local - absolute imports
-from ansible_ai_gateway.core.ansible_context import AnsibleContextProcessor
-from ansible_ai_gateway.core.providers.base import BaseLLMProvider
+from ansible_maya.core.ansible_context import AnsibleContextProcessor
+from ansible_maya.core.providers.base import BaseLLMProvider
 ```
 
 ---
@@ -90,7 +90,7 @@ from ansible_ai_gateway.core.providers.base import BaseLLMProvider
 Example:
 ```python
 # sage/core/providers/custom.py
-from ansible_ai_gateway.core.providers.base import BaseLLMProvider
+from ansible_maya.core.providers.base import BaseLLMProvider
 
 class CustomProvider(BaseLLMProvider):
     name = "custom"
@@ -222,7 +222,7 @@ def generate_playbook(
 Use custom exceptions defined in `sage/core/exceptions.py`:
 
 ```python
-from ansible_ai_gateway.core.exceptions import PlaybookGenerationError, ValidationError
+from ansible_maya.core.exceptions import PlaybookGenerationError, ValidationError
 
 try:
     playbook = await generator.generate(event)
@@ -258,7 +258,7 @@ Use structured logging:
 
 ```python
 import logging
-from ansible_ai_gateway.utils.logger import get_logger
+from ansible_maya.utils.logger import get_logger
 
 logger = get_logger(__name__)
 
@@ -291,7 +291,7 @@ logger.info(f"Generated playbook for {event.event_type}")
 ```python
 # tests/unit/core/test_ansible_context.py
 import pytest
-from ansible_ai_gateway.core.ansible_context import AnsibleContextProcessor
+from ansible_maya.core.ansible_context import AnsibleContextProcessor
 
 def test_multi_task_detection():
     """Test detection of multi-task prompts."""
@@ -324,7 +324,7 @@ import pytest
 @pytest.mark.asyncio
 async def test_full_generation_flow(event_fixture, claude_provider):
     """Test complete playbook generation with real LLM."""
-    from ansible_ai_gateway.handlers.orchestrator import PlaybookOrchestrator
+    from ansible_maya.handlers.orchestrator import PlaybookOrchestrator
     
     orchestrator = PlaybookOrchestrator(provider=claude_provider)
     result = await orchestrator.handle_event(event_fixture)
@@ -356,17 +356,17 @@ async def test_generated_playbook(playbook_content: str) -> MoleculeResult:
 
 ```bash
 # Build development image
-docker build -t ansible-ai-gateway:dev .
+docker build -t ansible-maya:dev .
 
 # Build with build args
 docker build \
   --build-arg PYTHON_VERSION=3.11 \
-  -t ansible-ai-gateway:dev .
+  -t ansible-maya:dev .
 
 # Run locally
 docker run -p 8000:8000 \
   -e ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY \
-  ansible-ai-gateway:dev
+  ansible-maya:dev
 ```
 
 ### Docker Compose Development
@@ -376,16 +376,16 @@ docker run -p 8000:8000 \
 docker-compose up -d
 
 # View logs for specific service
-docker-compose logs -f ansible-ai-gateway
+docker-compose logs -f ansible-maya
 
 # Rebuild after code changes
-docker-compose up -d --build ansible-ai-gateway
+docker-compose up -d --build ansible-maya
 
 # Run tests in container
-docker-compose exec ansible-ai-gateway pytest
+docker-compose exec ansible-maya pytest
 
 # Shell into container
-docker-compose exec ansible-ai-gateway bash
+docker-compose exec ansible-maya bash
 ```
 
 ---
@@ -433,7 +433,7 @@ Use Redis for:
 For long-running tasks (Molecule tests), use background workers:
 
 ```python
-from ansible_ai_gateway.workers.tasks import run_molecule_test
+from ansible_maya.workers.tasks import run_molecule_test
 
 # Enqueue task
 task_id = await run_molecule_test.delay(playbook_content)
@@ -447,7 +447,7 @@ result = await get_task_result(task_id)
 Implement rate limiting for LLM APIs:
 
 ```python
-from ansible_ai_gateway.core.rate_limiter import RateLimiter
+from ansible_maya.core.rate_limiter import RateLimiter
 
 limiter = RateLimiter(
     requests_per_minute=50,

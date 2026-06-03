@@ -20,14 +20,14 @@ from typing import Any, Dict, Optional
 
 from anthropic import Anthropic, AsyncAnthropic, APIError, RateLimitError
 
-from ansible_ai_gateway.core.providers.base import (
+from ansible_maya.core.providers.base import (
     BaseLLMProvider,
     GenerationRequest,
     GenerationResponse,
     ModelTier,
     ProviderStatus,
 )
-from ansible_ai_gateway.core.prompt_templates import (
+from ansible_maya.core.prompt_templates import (
     get_system_prompt,
     get_event_prompt,
     get_optimal_temperature,
@@ -35,7 +35,7 @@ from ansible_ai_gateway.core.prompt_templates import (
     format_multi_task_prompt,
     is_multi_task_prompt,
 )
-from ansible_ai_gateway.core.session_context import get_session_context
+from ansible_maya.core.session_context import get_session_context
 
 
 class ClaudeProvider(BaseLLMProvider):
