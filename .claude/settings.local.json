@@ -24,7 +24,14 @@
       "Read(//tmp/**)",
       "Bash(grep -E \"\\\\.\\(py\\)$\")",
       "Bash(/tmp/verify_gitops_removal.sh)",
-      "Bash(grep -E \"\\\\.\\(md|txt\\)$\")"
+      "Bash(grep -E \"\\\\.\\(md|txt\\)$\")",
+      "Bash(docker-compose down *)",
+      "Bash(podman-compose ps *)",
+      "Bash(podman-compose down *)",
+      "Bash(podman-compose build *)",
+      "Bash(podman-compose up *)",
+      "Bash(ansible-playbook generate-and-push.yml -e \"event_type=test_timestamp\")",
+      "Bash(ansible-playbook generate-and-push.yml -v)"
     ]
   }
 }

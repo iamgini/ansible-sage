@@ -66,21 +66,21 @@ ENV PATH="/opt/venv/bin:$PATH" \
     PIP_DISABLE_PIP_VERSION_CHECK=1
 
 # Create non-root user
-RUN groupadd -r sage && \
-    useradd -r -g sage -u 1000 -d /app -s /bin/bash sage && \
+RUN groupadd -r ansible_maya && \
+    useradd -r -g ansible_maya -u 1000 -d /app -s /bin/bash ansible_maya && \
     mkdir -p /app && \
-    chown -R sage:sage /app
+    chown -R ansible_maya:ansible_maya /app
 
 # Switch to non-root user
-USER sage
+USER ansible_maya
 WORKDIR /app
 
 # Copy application code
-COPY --chown=sage:sage sage/ ./sage/
-COPY --chown=sage:sage pyproject.toml ./
-COPY --chown=sage:sage README.md ./
-COPY --chown=sage:sage LICENSE ./
-COPY --chown=sage:sage NOTICE ./
+COPY --chown=ansible_maya:ansible_maya ansible_maya/ ./ansible_maya/
+COPY --chown=ansible_maya:ansible_maya pyproject.toml ./
+COPY --chown=ansible_maya:ansible_maya README.md ./
+COPY --chown=ansible_maya:ansible_maya LICENSE ./
+COPY --chown=ansible_maya:ansible_maya NOTICE ./
 
 # Create directories for runtime
 RUN mkdir -p \
@@ -96,4 +96,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
 EXPOSE 8000
 
 # Default command
-CMD ["uvicorn", "sage.api.server:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "ansible_maya.api.server:app", "--host", "0.0.0.0", "--port", "8000"]
