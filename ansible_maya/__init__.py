@@ -18,7 +18,7 @@ Ansible Maya - Multi-provider AI Gateway for Ansible Playbook Generation
 AI-powered event-driven playbook generation for AIOps workflows.
 """
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 __author__ = "Ansible Maya Contributors"
 __license__ = "Apache-2.0"
 

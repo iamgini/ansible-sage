@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Planned
+- Molecule testing integration for generated playbooks
+- RAG/Knowledge base for learning from past playbooks
+- Additional integration tests
+
+## [0.2.0] - 2026-06-12
+
 ### Added
 - **Spec-Kit Integration** - Two-phase generation workflow
   - `/api/v1/specs/plan` - Generate execution plan for approval
@@ -18,11 +25,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Auto-refinement based on findings
   - Confidence boost: +5% to +15% based on review scores
   - Enable with `?multi_agent_review=true` query parameter
+- Usage examples for multi-agent review in `examples/`
 
-### Planned
-- Molecule testing integration for generated playbooks
-- RAG/Knowledge base for learning from past playbooks
-- Additional integration tests
+### Changed
+- Updated roadmap - removed completed features (OpenAI/Ollama providers already implemented)
 
 ## [0.1.0] - 2026-06-12
 
@@ -87,5 +93,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Notes
 This is the first public release. The API is functional but may evolve based on user feedback. Contributions and feedback welcome!
 
-[Unreleased]: https://github.com/iamgini/ansible-maya/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/iamgini/ansible-maya/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/iamgini/ansible-maya/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/iamgini/ansible-maya/releases/tag/v0.1.0
