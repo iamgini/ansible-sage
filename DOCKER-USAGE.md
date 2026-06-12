@@ -2,14 +2,14 @@
 
 ## Published Docker Images
 
-After v1.0.0 release, images will be available at:
+Container images are available at **Quay.io**:
 
 ```
-ghcr.io/iamgini/ansible-maya:latest
-ghcr.io/iamgini/ansible-maya:1.0.0
-ghcr.io/iamgini/ansible-maya:1.0
-ghcr.io/iamgini/ansible-maya:1
+quay.io/iamgini/ansible-maya:latest
+quay.io/iamgini/ansible-maya:0.2.0
 ```
+
+Browse images: https://quay.io/repository/iamgini/ansible-maya
 
 ## Quick Start with Docker
 
@@ -17,14 +17,14 @@ ghcr.io/iamgini/ansible-maya:1
 
 ```bash
 # Pull latest image
-docker pull ghcr.io/iamgini/ansible-maya:latest
+docker pull quay.io/iamgini/ansible-maya:latest
 
 # Run with API key
 docker run -d \
   --name ansible-maya \
   -p 8000:8000 \
   -e ANTHROPIC_API_KEY=sk-ant-your-key-here \
-  ghcr.io/iamgini/ansible-maya:latest
+  quay.io/iamgini/ansible-maya:latest
 
 # Check health
 curl http://localhost:8000/health
@@ -80,7 +80,7 @@ docker run -d \
   -e ANTHROPIC_API_KEY=sk-ant-your-key \
   -v /path/to/generated:/app/generated_playbooks \
   -v /path/to/logs:/app/logs \
-  ghcr.io/iamgini/ansible-maya:latest
+  quay.io/iamgini/ansible-maya:latest
 ```
 
 ## Testing the API
@@ -119,16 +119,16 @@ docker run -d -p 8000:8000 \
   ansible-maya:local
 ```
 
-## Multi-Architecture Support
+## Container Runtime
 
-Images are built for both AMD64 and ARM64:
+Works with both Docker and Podman:
 
 ```bash
-# Pull specific architecture (automatic based on your system)
-docker pull ghcr.io/iamgini/ansible-maya:latest
+# Using Docker
+docker pull quay.io/iamgini/ansible-maya:latest
 
-# Verify architecture
-docker inspect ghcr.io/iamgini/ansible-maya:latest | grep Architecture
+# Using Podman
+podman pull quay.io/iamgini/ansible-maya:latest
 ```
 
 ## Production Deployment
@@ -141,7 +141,7 @@ version: '3.8'
 
 services:
   ansible-maya:
-    image: ghcr.io/iamgini/ansible-maya:1.0.0
+    image: quay.io/iamgini/ansible-maya:0.2.0
     ports:
       - "8000:8000"
     environment:
@@ -183,7 +183,7 @@ spec:
     spec:
       containers:
       - name: ansible-maya
-        image: ghcr.io/iamgini/ansible-maya:1.0.0
+        image: quay.io/iamgini/ansible-maya:0.2.0
         ports:
         - containerPort: 8000
         env:
@@ -265,7 +265,7 @@ chown -R 1000:1000 /path/to/generated_playbooks
 
 1. **Never commit API keys** - Use environment variables or secrets management
 2. **Use specific version tags** - Avoid `latest` in production
-3. **Scan images** - `docker scan ghcr.io/iamgini/ansible-maya:1.0.0`
+3. **Scan images** - `docker scan quay.io/iamgini/ansible-maya:0.2.0`
 4. **Limit resources** - Use Docker resource constraints
 5. **Network isolation** - Use Docker networks for service communication
 6. **Regular updates** - Keep images up to date with security patches
@@ -274,13 +274,13 @@ chown -R 1000:1000 /path/to/generated_playbooks
 
 ```bash
 # View image details
-docker inspect ghcr.io/iamgini/ansible-maya:1.0.0
+docker inspect quay.io/iamgini/ansible-maya:0.2.0
 
 # Check image size
-docker images ghcr.io/iamgini/ansible-maya
+docker images quay.io/iamgini/ansible-maya
 
 # View layers
-docker history ghcr.io/iamgini/ansible-maya:1.0.0
+docker history quay.io/iamgini/ansible-maya:0.2.0
 ```
 
 ## Support
