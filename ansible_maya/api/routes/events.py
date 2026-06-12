@@ -6,8 +6,8 @@
 from fastapi import APIRouter, Query
 from pydantic import BaseModel
 
-from ansible_maya.core.providers import get_provider
 from ansible_maya.core.multi_agent_pipeline import MultiAgentPipeline
+from ansible_maya.core.providers import get_provider
 from ansible_maya.handlers.orchestrator import AIOpsEvent, PlaybookOrchestrator
 
 router = APIRouter()
