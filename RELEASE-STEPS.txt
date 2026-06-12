@@ -1,0 +1,132 @@
+═══════════════════════════════════════════════════════════════
+   ANSIBLE MAYA v0.1.0 - RELEASE STEPS
+═══════════════════════════════════════════════════════════════
+
+All fixes are complete! Follow these steps to release v0.1.0:
+
+───────────────────────────────────────────────────────────────
+STEP 1: Create GitHub Repository (5 min)
+───────────────────────────────────────────────────────────────
+1. Go to: https://github.com/new
+2. Repository name: ansible-maya
+3. Description: AI-powered Ansible playbook generator with
+   validation and best practices - माया (maya): creative power
+4. Public repository
+5. Do NOT initialize with README
+6. Create repository
+
+───────────────────────────────────────────────────────────────
+STEP 2: Push to GitHub (5 min)
+───────────────────────────────────────────────────────────────
+cd /home/gmadappa/ansible/ansible-maya
+
+# Add remote
+git remote add origin https://github.com/iamgini/ansible-maya.git
+
+# Commit changes
+git add .
+git commit -m "Prepare for v0.1.0 - Initial public release
+
+- Update all URLs to iamgini
+- Fix CI configuration
+- Add integration tests
+- Enable Docker publishing
+- Update branding and documentation
+"
+
+# Push to GitHub
+git push -u origin main
+
+───────────────────────────────────────────────────────────────
+STEP 3: Configure Repository (5 min)
+───────────────────────────────────────────────────────────────
+On https://github.com/iamgini/ansible-maya:
+
+Settings → General:
+- Topics: ansible, ai, llm, automation, aiops, playbook-generator,
+  claude, event-driven
+
+Settings → Features:
+- ✅ Enable Discussions
+- ✅ Enable Issues
+
+───────────────────────────────────────────────────────────────
+STEP 4: Test Locally (10 min)
+───────────────────────────────────────────────────────────────
+# Linting
+black --check ansible_maya/ tests/
+isort --check-only ansible_maya/ tests/
+ruff check ansible_maya/ tests/
+
+# Fix if needed
+black ansible_maya/ tests/
+isort ansible_maya/ tests/
+
+# Tests
+pytest tests/unit/ -v
+pytest tests/integration/ -v -m integration
+
+# Docker
+docker build -t ansible-maya:test .
+docker-compose up -d
+curl http://localhost:8000/health
+docker-compose down
+
+───────────────────────────────────────────────────────────────
+STEP 5: Create Git Tag (5 min)
+───────────────────────────────────────────────────────────────
+git tag -a v0.1.0 -m "Initial public release - v0.1.0
+
+First public release of Ansible Maya!
+
+Features:
+- AI-powered playbook generation (Claude + custom LLM)
+- Confidence-based recommendations
+- ansible-lint validation with auto-fix
+- Session context management
+- REST API, CLI, and Python SDK
+- Docker containerization
+- Comprehensive documentation
+
+Status: v0.1.0 - Initial release, seeking feedback.
+API may evolve based on community input.
+
+See CHANGELOG.md for details."
+
+git push origin v0.1.0
+
+───────────────────────────────────────────────────────────────
+STEP 6: Create GitHub Release (10 min)
+───────────────────────────────────────────────────────────────
+1. Go to: https://github.com/iamgini/ansible-maya/releases
+2. "Draft a new release"
+3. Tag: v0.1.0
+4. Title: v0.1.0 - Initial Public Release 🎉
+5. ✅ Check "Set as a pre-release" (important!)
+6. Description: Copy from CHANGELOG.md + quick start
+7. Publish
+
+───────────────────────────────────────────────────────────────
+STEP 7: Verify Docker Images (10 min)
+───────────────────────────────────────────────────────────────
+Wait for GitHub Actions, then:
+
+docker pull ghcr.io/iamgini/ansible-maya:0.1.0
+docker run -d -p 8000:8000 \
+  -e ANTHROPIC_API_KEY=your-key \
+  ghcr.io/iamgini/ansible-maya:0.1.0
+curl http://localhost:8000/health
+
+───────────────────────────────────────────────────────────────
+POST-RELEASE: Announce
+───────────────────────────────────────────────────────────────
+- LinkedIn: Share as "initial release, seeking feedback"
+- Twitter/X: Short announcement
+- Reddit r/ansible: Post with details
+- Focus on: "v0.1.0, looking for early adopters"
+
+═══════════════════════════════════════════════════════════════
+Total Time: 30-60 minutes
+═══════════════════════════════════════════════════════════════
+
+Good luck! 🚀

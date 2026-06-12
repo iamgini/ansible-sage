@@ -28,19 +28,19 @@ jobs:
           pip install -r requirements-dev.txt
 
       - name: Run black
-        run: black --check sage/ tests/
+        run: black --check ansible_maya/ tests/
 
       - name: Run isort
-        run: isort --check-only sage/ tests/
+        run: isort --check-only ansible_maya/ tests/
 
       - name: Run ruff
-        run: ruff check sage/ tests/
+        run: ruff check ansible_maya/ tests/
 
       - name: Run mypy
-        run: mypy sage/
+        run: mypy ansible_maya/
 
       - name: Run bandit
-        run: bandit -r sage/
+        run: bandit -r ansible_maya/
 
   # ============================================================================
   # Unit Tests
@@ -69,7 +69,7 @@ jobs:
 
       - name: Run unit tests
         run: |
-          pytest tests/unit/ -v --cov=sage --cov-report=xml --cov-report=term
+          pytest tests/unit/ -v --cov=ansible_maya --cov-report=xml --cov-report=term
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
@@ -90,8 +90,8 @@ jobs:
       postgres:
         image: postgres:16-alpine
         env:
-          POSTGRES_DB: ansible_sage_test
-          POSTGRES_USER: sage
+          POSTGRES_DB: ansible_ansible_maya_test
+          POSTGRES_USER: ansible_maya
           POSTGRES_PASSWORD: test_password
         options: >-
           --health-cmd pg_isready
@@ -128,7 +128,7 @@ jobs:
 
       - name: Run integration tests
         env:
-          DATABASE_URL: postgresql://sage:test_password@localhost:5432/ansible_sage_test
+          DATABASE_URL: postgresql://ansible_maya:test_password@localhost:5432/ansible_ansible_maya_test
           REDIS_URL: redis://localhost:6379/0
           TEST_MODE: true
         run: |

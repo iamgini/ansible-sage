@@ -170,3 +170,15 @@ dump.rdb
 docker-compose.local.yml
 config.local.yaml
 settings.local.py
+
+
+# Claude Code
+.claude/
+
+# Internal planning/release notes (not for public repo)
+RELEASE-*.md
+TODO-*.md
+ANNOUNCEMENT-*.md
+CLEANUP-*.md
+SCOPE-*.md
+*-NOTES.md

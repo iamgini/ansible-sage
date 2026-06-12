@@ -1,4 +1,4 @@
-# Copyright 2026 Ansible AI Gateway Contributors
+# Copyright 2026 Ansible Maya Contributors
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,13 +13,13 @@
 # limitations under the License.
 
 """
-Ansible AI Gateway - Multi-provider AI Gateway for Ansible Playbook Generation
+Ansible Maya - Multi-provider AI Gateway for Ansible Playbook Generation
 
 AI-powered event-driven playbook generation for AIOps workflows.
 """
 
 __version__ = "0.1.0"
-__author__ = "Ansible AI Gateway Contributors"
+__author__ = "Ansible Maya Contributors"
 __license__ = "Apache-2.0"
 
 from ansible_maya.core import AnsibleContextProcessor

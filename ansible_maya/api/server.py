@@ -1,4 +1,4 @@
-# Copyright 2026 Ansible AI Gateway Contributors
+# Copyright 2026 Ansible Maya Contributors
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""FastAPI application server for Ansible AI Gateway."""
+"""FastAPI application server for Ansible Maya."""
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -23,8 +23,8 @@ from ansible_maya import __version__
 
 # Create FastAPI app
 app = FastAPI(
-    title="Ansible AI Gateway",
-    description="Multi-provider AI gateway for Ansible playbook generation - AI-powered event-driven playbook generation",
+    title="Ansible Maya API",
+    description="AI-powered Ansible playbook generator with validation and best practices - माया (maya): creative power",
     version=__version__,
     docs_url="/docs",
     redoc_url="/redoc",
@@ -44,9 +44,9 @@ app.add_middleware(
 async def root() -> dict:
     """Root endpoint with API information."""
     return {
-        "name": "Ansible AI Gateway",
+        "name": "Ansible Maya",
         "version": __version__,
-        "description": "AI-powered event-driven Ansible playbook generation",
+        "description": "AI-powered Ansible playbook generator with validation and best practices",
         "docs": "/docs",
         "health": "/health",
     }
@@ -90,7 +90,7 @@ if __name__ == "__main__":
     import uvicorn
 
     uvicorn.run(
-        "sage.api.server:app",
+        "ansible_maya.api.server:app",
         host="0.0.0.0",
         port=8000,
         reload=True,

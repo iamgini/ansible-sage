@@ -22,7 +22,7 @@ keywords = [
     "self-healing"
 ]
 classifiers = [
-    "Development Status :: 3 - Alpha",
+    "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "Intended Audience :: System Administrators",
     "License :: OSI Approved :: Apache Software License",
@@ -62,10 +62,10 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/your-org/ansible-maya"
-Documentation = "https://ansible-maya.readthedocs.io"
-Repository = "https://github.com/your-org/ansible-maya"
-Issues = "https://github.com/your-org/ansible-maya/issues"
+Homepage = "https://github.com/iamgini/ansible-maya"
+Documentation = "https://github.com/iamgini/ansible-maya#readme"
+Repository = "https://github.com/iamgini/ansible-maya"
+Issues = "https://github.com/iamgini/ansible-maya/issues"
 
 [project.scripts]
 ansible-maya = "ansible_maya.cli:main"

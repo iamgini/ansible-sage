@@ -70,7 +70,7 @@ git clone https://github.com/YOUR_USERNAME/ansible-maya.git
 cd ansible-maya
 
 # Add upstream remote
-git remote add upstream https://github.com/your-org/ansible-maya.git
+git remote add upstream https://github.com/iamgini/ansible-maya.git
 
 # Create virtual environment
 python3.11 -m venv venv
@@ -448,10 +448,10 @@ Maintainers will handle releases, but here's the process:
 
 ## Questions?
 
-- **General questions**: Open a [GitHub Discussion](https://github.com/your-org/ansible-maya/discussions)
-- **Bug reports**: Open an [Issue](https://github.com/your-org/ansible-maya/issues)
-- **Feature requests**: Open an [Issue](https://github.com/your-org/ansible-maya/issues) with `enhancement` label
-- **Security issues**: Email security@your-domain.com (do NOT open public issue)
+- **General questions**: Open a [GitHub Discussion](https://github.com/iamgini/ansible-maya/discussions)
+- **Bug reports**: Open an [Issue](https://github.com/iamgini/ansible-maya/issues)
+- **Feature requests**: Open an [Issue](https://github.com/iamgini/ansible-maya/issues) with `enhancement` label
+- **Security issues**: Email GitHub Security Advisories (do NOT open public issue)
 
 ## License
 

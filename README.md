@@ -59,7 +59,7 @@ See [WORKFLOW.md](WORKFLOW.md) for detailed workflow documentation.
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-org/ansible-maya.git
+git clone https://github.com/iamgini/ansible-maya.git
 cd ansible-maya
 
 # Configure environment
@@ -537,7 +537,7 @@ pre-commit run --all-files
 - **Code review**: Medium/low confidence playbooks require human review before execution
 - **Validation**: Always validate generated playbooks before execution
 
-For security issues, please email security@your-domain.com instead of using the issue tracker.
+For security issues, please report them via [GitHub Security Advisories](https://github.com/iamgini/ansible-maya/security/advisories/new) instead of using the public issue tracker.
 
 ---
 
@@ -586,10 +586,10 @@ This product incorporates concepts from [vscode-ansible](https://github.com/ansi
 
 ## 📞 Support
 
-- 💬 **Discussions**: [GitHub Discussions](https://github.com/your-org/ansible-maya/discussions)
-- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/your-org/ansible-maya/issues)
-- 📧 **Email**: support@your-domain.com
+- 💬 **Discussions**: [GitHub Discussions](https://github.com/iamgini/ansible-maya/discussions)
+- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/iamgini/ansible-maya/issues)
 - 📚 **Documentation**: See docs in this repository
+- 🌐 **Author**: [@iamgini](https://github.com/iamgini)
 
 ---
 

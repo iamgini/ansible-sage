@@ -1,4 +1,4 @@
-# Copyright 2026 Ansible AI Gateway Contributors
+# Copyright 2026 Ansible Maya Contributors
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Command-line interface for Ansible AI Gateway."""
+"""Command-line interface for Ansible Maya."""
 
 import asyncio
 import os
@@ -34,7 +34,7 @@ from ansible_maya.handlers.orchestrator import (
 @click.group()
 @click.version_option(version=__version__)
 def cli():
-    """Ansible AI Gateway - AI-powered event-driven playbook generation."""
+    """Ansible Maya - AI-powered event-driven playbook generation."""
     pass
 
 
@@ -191,7 +191,7 @@ def serve(host, port, reload):
     """Start the API server."""
     import uvicorn
 
-    click.echo(f"🚀 Starting Ansible AI Gateway API server on {host}:{port}")
+    click.echo(f"🚀 Starting Ansible Maya API server on {host}:{port}")
     click.echo(f"📚 API docs: http://{host}:{port}/docs")
 
     uvicorn.run(

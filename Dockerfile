@@ -45,7 +45,7 @@ LABEL org.opencontainers.image.title="Ansible Maya"
 LABEL org.opencontainers.image.description="AI-powered Ansible playbook generator with validation and best practices"
 LABEL org.opencontainers.image.vendor="Ansible Maya Contributors"
 LABEL org.opencontainers.image.licenses="Apache-2.0"
-LABEL org.opencontainers.image.source="https://github.com/your-org/ansible-maya"
+LABEL org.opencontainers.image.source="https://github.com/iamgini/ansible-maya"
 
 # Install runtime dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \

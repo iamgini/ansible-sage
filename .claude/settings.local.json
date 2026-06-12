@@ -33,7 +33,8 @@
       "Bash(ansible-playbook generate-and-push.yml -e \"event_type=test_timestamp\")",
       "Bash(ansible-playbook generate-and-push.yml -v)",
       "Read(//home/gmadappa/ansible/ansible-aap-cac/**)",
-      "Read(//home/gmadappa/ansible/ansible-controller-cac/**)"
+      "Read(//home/gmadappa/ansible/ansible-controller-cac/**)",
+      "Bash(grep -E \"\\\\.md$\")"
     ]
   }
 }
