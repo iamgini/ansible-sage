@@ -603,15 +603,21 @@ This product incorporates concepts from [vscode-ansible](https://github.com/ansi
 - [ ] AAP catalog search before generation
 
 ### Planned Features (Quality Improvements)
-- [ ] **Spec-Kit Integration**: Generate execution plan/specification before playbook for review
-  - Lightweight mode: Add `execution_plan` field to response showing steps in plain English
-  - Full mode: Two-phase generation (spec approval → playbook generation)
-  - Conditional: Use spec-driven approach for high-risk/unknown events only
+### Planned Features (Quality & Intelligence)
+- [ ] **AAP Catalog Search** - Check existing playbooks/roles before generating. Reuse > regenerate
+- [ ] **Multi-Agent Review Pipeline** - Draft → Security review → Best practices → Refine. Target 95%+ confidence
+- [ ] **RAG/Knowledge Base** - Learn from past successful playbooks. Organization-specific patterns
+- [ ] **Auto Test Generation** - Generate Molecule tests alongside playbooks
+- [ ] **Interactive Refinement** - Multi-turn conversation to improve playbooks iteratively
+- [ ] **Explain Mode** - Show reasoning behind module choices and risk assessment
+- [ ] **A/B Generation** - Generate multiple approaches for comparison
+- [ ] **Auto-Parameterization** - Extract hardcoded values into reusable variables
+
+### Planned Features (Providers & Platform)
 - [ ] OpenAI provider (native implementation)
 - [ ] Ollama (local LLM) provider
-- [ ] Molecule testing integration for generated playbooks
 - [ ] Metrics and observability dashboard
-- [ ] Multi-language support for event descriptions
+- [ ] Multi-language support
 - [ ] Custom prompt template editor UI
 
 ### Current Status
