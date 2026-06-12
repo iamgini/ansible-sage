@@ -7,14 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **Spec-Kit Integration** - Two-phase generation workflow
+  - `/api/v1/specs/plan` - Generate execution plan for approval
+  - `/api/v1/specs/{id}/generate` - Generate playbook from approved spec
+  - Uses cheaper model (Haiku) for specs, full model for playbooks
+- **Multi-Agent Review Pipeline** - Optional quality enhancement
+  - Security review agent (hardcoded secrets, unsafe commands, permissions)
+  - Best practices review agent (FQCN, idempotency, task naming)
+  - Auto-refinement based on findings
+  - Confidence boost: +5% to +15% based on review scores
+  - Enable with `?multi_agent_review=true` query parameter
+
 ### Planned
 - OpenAI provider (native implementation)
 - Ollama (local LLM) provider  
 - Molecule testing integration for generated playbooks
-- Spec-Kit integration for execution planning
-- AAP catalog search before generation
+- RAG/Knowledge base for learning from past playbooks
 - Additional integration tests
-- AAP catalog integration
 
 ## [0.1.0] - 2026-06-12
 

@@ -18,7 +18,7 @@ Ansible Maya automatically **generates**, **validates**, and **publishes** Ansib
 - 🤖 **AI-Powered Generation**: Leverages LLMs (Claude or custom) to generate production-ready playbooks
 - 📝 **Event-Aware Generation**: Generates playbooks based on infrastructure event context (disk full, service down, high CPU, etc.)
 - ✅ **Intelligent Validation**: Automatic ansible-lint checking with auto-fix capabilities
-- 📊 **Confidence-Based Recommendations**: 
+- 📊 **Confidence-Based Recommendations**:
   - **High Confidence (≥80%)**: Production-ready for execution
   - **Medium Confidence (50-80%)**: Human review recommended
   - **Low Confidence (<50%)**: Testing required before execution
@@ -26,13 +26,15 @@ Ansible Maya automatically **generates**, **validates**, and **publishes** Ansib
 - 🏗️ **BYOM (Bring Your Own Model)**: Pluggable LLM providers - use Claude or custom OpenAI-compatible models
 - 🔌 **REST API & CLI**: Easy integration into your existing automation workflows
 - 🔍 **Multi-Mode Classification**: Automatically categorizes events as known, complex, or unknown
+- 🛡️ **Multi-Agent Review**: Optional quality pipeline with security and best practices review
+- 📋 **Spec-Kit**: Two-phase generation - approve execution plan before generating playbook
 
 ---
 
 ## 🎯 Core Workflow
 
 ```
-[Your Tool/Playbook] → API Call with Event Context → Classification → Generation (LLM) 
+[Your Tool/Playbook] → API Call with Event Context → Classification → Generation (LLM)
 → Validation (ansible-lint) → Confidence Scoring → Playbook Response
 ```
 
@@ -84,6 +86,7 @@ Access interactive API docs: `http://localhost:8000/docs`
 
 ### Generate Your First Playbook
 
+**Standard generation:**
 ```bash
 curl -X POST http://localhost:8000/api/v1/events/generate \
   -H "Content-Type: application/json" \
@@ -97,6 +100,24 @@ curl -X POST http://localhost:8000/api/v1/events/generate \
       "usage_percent": 95
     }
   }'
+```
+
+**With multi-agent review (higher quality):**
+```bash
+curl -X POST "http://localhost:8000/api/v1/events/generate?multi_agent_review=true" \
+  -H "Content-Type: application/json" \
+  -d '{...}'
+```
+
+**Two-phase with Spec-Kit:**
+```bash
+# Phase 1: Get execution plan
+curl -X POST http://localhost:8000/api/v1/specs/plan -d '{...}'
+# Returns spec_id
+
+# Phase 2: Approve & generate
+curl -X POST http://localhost:8000/api/v1/specs/{spec_id}/generate \
+  -d '{"approved": true}'
 ```
 
 Response includes:
@@ -257,7 +278,7 @@ async def generate_playbook():
     provider = get_provider("claude", config={
         "api_key": "sk-ant-your-key"
     })
-    
+
     # Create event
     event = AIOpsEvent(
         event_id="evt-001",
@@ -268,17 +289,17 @@ async def generate_playbook():
         timestamp=datetime.now(),
         metadata={"partition": "/var", "usage_percent": 95}
     )
-    
+
     # Generate playbook
     orchestrator = PlaybookOrchestrator(provider=provider)
     response = await orchestrator.handle_event(event)
-    
+
     # Display results
     print(f"Confidence: {response.confidence_score:.0%}")
     print(f"Confidence Level: {response.confidence_level}")
     print(f"Validation: {'Passed' if response.validation_result.passed else 'Failed'}")
     print(f"\nPlaybook:\n{response.playbook}")
-    
+
     return response
 
 # Run
@@ -348,7 +369,7 @@ Use EDA to receive monitoring events and call Maya's API:
     - ansible.eda.prometheus
       host: 0.0.0.0
       port: 8001
-  
+
   rules:
     - name: Disk space critical - call Maya
       condition: event.alert_name == "DiskSpaceCritical"
@@ -378,12 +399,12 @@ Use EDA to receive monitoring events and call Maya's API:
           severity: "{{ severity }}"
           description: "{{ description }}"
       register: maya_response
-    
+
     - name: Save generated playbook
       copy:
         content: "{{ maya_response.json.playbook }}"
         dest: "/tmp/generated-{{ event_type }}.yml"
-    
+
     - name: Execute if high confidence
       when: maya_response.json.confidence_level == "high"
       shell: ansible-playbook /tmp/generated-{{ event_type }}.yml
@@ -405,11 +426,11 @@ Call Maya from an AAP workflow:
           event_type: "{{ event_type }}"
           host: "{{ target_host }}"
           severity: "{{ severity }}"
-      
+
     - name: Review Generated Playbook
       unified_job_template: "Manual Approval"
       when: "{{ confidence_level != 'high' }}"
-      
+
     - name: Execute Remediation
       unified_job_template: "Execute Dynamic Playbook"
       when: approved
@@ -598,14 +619,9 @@ This product incorporates concepts from [vscode-ansible](https://github.com/ansi
 ## 🎯 Roadmap
 
 ### In Progress
-- [ ] **Spec-Kit Integration** - Two-phase generation (plan approval → playbook)
 - [ ] Integration tests suite expansion
-- [ ] AAP catalog search before generation
 
-### Planned Features (Quality Improvements)
 ### Planned Features (Quality & Intelligence)
-- [ ] **AAP Catalog Search** - Check existing playbooks/roles before generating. Reuse > regenerate
-- [ ] **Multi-Agent Review Pipeline** - Draft → Security review → Best practices → Refine. Target 95%+ confidence
 - [ ] **RAG/Knowledge Base** - Learn from past successful playbooks. Organization-specific patterns
 - [ ] **Auto Test Generation** - Generate Molecule tests alongside playbooks
 - [ ] **Interactive Refinement** - Multi-turn conversation to improve playbooks iteratively
@@ -628,6 +644,8 @@ This product incorporates concepts from [vscode-ansible](https://github.com/ansi
 - ✅ Event context classification
 - ✅ CLI and REST API
 - ✅ Session context management
+- ✅ **Spec-Kit** - Two-phase generation with approval
+- ✅ **Multi-Agent Review** - Security + best practices pipeline
 - 🔄 Comprehensive integration tests
 - 🔄 Example integration playbooks
 
