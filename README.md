@@ -598,10 +598,11 @@ This product incorporates concepts from [vscode-ansible](https://github.com/ansi
 ## 🎯 Roadmap
 
 ### In Progress
+- [ ] **Spec-Kit Integration** - Two-phase generation (plan approval → playbook)
 - [ ] Integration tests suite expansion
 - [ ] AAP catalog search before generation
 
-### Planned Features
+### Planned Features (Quality Improvements)
 - [ ] **Spec-Kit Integration**: Generate execution plan/specification before playbook for review
   - Lightweight mode: Add `execution_plan` field to response showing steps in plain English
   - Full mode: Two-phase generation (spec approval → playbook generation)
