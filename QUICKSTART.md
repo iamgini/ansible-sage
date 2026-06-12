@@ -31,6 +31,23 @@ cp .env.example .env
 
 ### Option 2: Docker (Recommended)
 
+**Using published image:**
+```bash
+# Pull from Quay.io
+docker pull quay.io/iamgini/ansible-maya:0.2.0
+
+# Run container
+docker run -d \
+  --name ansible-maya \
+  -p 8000:8000 \
+  -e ANTHROPIC_API_KEY=sk-ant-your-key-here \
+  quay.io/iamgini/ansible-maya:0.2.0
+
+# Check health
+curl http://localhost:8000/health
+```
+
+**Using docker-compose (local development):**
 ```bash
 cd /path/to/ansible-maya
 
@@ -38,7 +55,7 @@ cd /path/to/ansible-maya
 cp .env.example .env
 # Edit .env and add your ANTHROPIC_API_KEY
 
-# Start all services
+# Start services
 docker-compose up -d
 
 # Check logs
@@ -117,6 +134,39 @@ curl -X POST http://localhost:8000/api/v1/events/generate \
 
 # Access interactive API docs
 open http://localhost:8000/docs
+```
+
+### 4. Two-Phase Generation (Spec-Kit)
+
+```bash
+# Phase 1: Get execution plan
+curl -X POST http://localhost:8000/api/v1/specs/plan \
+  -H "Content-Type: application/json" \
+  -d '{
+    "event_type": "service_down",
+    "description": "Nginx service stopped",
+    "host": "web-01"
+  }' | jq .
+
+# Review plan, then approve with spec_id
+curl -X POST http://localhost:8000/api/v1/specs/{spec_id}/generate \
+  -d '{"approved": true}'
+```
+
+### 5. Multi-Agent Review (Higher Quality)
+
+```bash
+# Enable multi-agent review for better quality
+curl -X POST "http://localhost:8000/api/v1/events/generate?multi_agent_review=true" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "event_type": "disk_full",
+    "description": "Disk at 95%",
+    "host": "web-server-01"
+  }' | jq .
+
+# Response includes security + best practices review
+# Confidence score boosted by +5% to +15%
 ```
 
 ## Common Event Types
@@ -255,15 +305,29 @@ ansible-maya serve --port 8080
 
 For production deployment:
 
-1. Use Docker Compose with proper environment variables
-2. Configure PostgreSQL for playbook history
-3. Set up Redis for caching
-4. Enable authentication on API endpoints
-5. Use production-grade LLM provider settings
-6. Configure monitoring with Prometheus/Grafana
-7. Set up log aggregation
+1. **Use published container images** from Quay.io
+   ```bash
+   docker pull quay.io/iamgini/ansible-maya:0.2.0
+   ```
 
-See `README.md` and `CLAUDE.md` for detailed production deployment guide.
+2. **Configure environment variables**
+   - `ANTHROPIC_API_KEY` (required for Claude)
+   - `LLM_PROVIDER` (claude, openai, or custom)
+   - `MAYA_LOG_LEVEL` (INFO, DEBUG, WARNING)
+
+3. **Enable authentication** on API endpoints (reverse proxy recommended)
+
+4. **Use production-grade LLM settings**
+   - Temperature: 0.2 for consistency
+   - Rate limiting for cost control
+
+5. **Configure monitoring** with Prometheus/Grafana
+
+6. **Set up log aggregation** (ELK, Loki, etc.)
+
+**Note:** Ansible Maya is **stateless** - no PostgreSQL or Redis required!
+
+See `README.md` and `DOCKER-USAGE.md` for detailed deployment guide.
 
 ---
 
