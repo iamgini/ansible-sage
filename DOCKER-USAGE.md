@@ -69,8 +69,8 @@ Optional:
 - `LLM_PROVIDER` - Provider to use (default: `claude`)
 - `CUSTOM_API_BASE_URL` - For custom OpenAI-compatible providers
 - `CUSTOM_API_KEY` - API key for custom provider
-- `SAGE_LOG_LEVEL` - Log level (default: `INFO`)
-- `SAGE_ANSIBLE_LINT_AUTO_FIX` - Auto-fix lint issues (default: `true`)
+- `MAYA_LOG_LEVEL` - Log level (default: `INFO`)
+- `MAYA_ANSIBLE_LINT_AUTO_FIX` - Auto-fix lint issues (default: `true`)
 
 ### Volume Mounts
 

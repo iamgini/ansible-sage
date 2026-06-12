@@ -34,7 +34,9 @@
       "Bash(ansible-playbook generate-and-push.yml -v)",
       "Read(//home/gmadappa/ansible/ansible-aap-cac/**)",
       "Read(//home/gmadappa/ansible/ansible-controller-cac/**)",
-      "Bash(grep -E \"\\\\.md$\")"
+      "Bash(grep -E \"\\\\.md$\")",
+      "Bash(gh auth *)",
+      "Bash(gh release *)"
     ]
   }
 }

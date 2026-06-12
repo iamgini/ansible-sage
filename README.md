@@ -192,8 +192,8 @@ ANTHROPIC_API_KEY=sk-ant-...           # For Claude
 # AAP_VERIFY_SSL=true
 
 # Service Configuration
-SAGE_LOG_LEVEL=INFO
-SAGE_ANSIBLE_LINT_AUTO_FIX=true        # Auto-fix lint issues
+MAYA_LOG_LEVEL=INFO
+MAYA_ANSIBLE_LINT_AUTO_FIX=true        # Auto-fix lint issues
 ```
 
 ### Confidence Scoring
@@ -437,7 +437,7 @@ pre-commit install
 pytest
 
 # Run with hot-reload
-uvicorn sage.api.server:app --reload
+uvicorn ansible_maya.api.server:app --reload
 ```
 
 ### Project Structure

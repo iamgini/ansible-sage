@@ -186,7 +186,7 @@ ansible-maya validate test.yml --fix
 
 ```
 ansible-maya/
-├── sage/                      # Main package
+├── ansible_maya/                      # Main package
 │   ├── core/                  # Core business logic
 │   │   ├── providers/         # LLM providers (Claude, OpenAI, etc.)
 │   │   ├── ansible_context.py # Ansible-specific processing
@@ -212,8 +212,8 @@ ansible-maya/
 2. **Read Documentation**: See `README.md` for comprehensive guide
 3. **Review CLAUDE.md**: Developer guidance for extending the system
 4. **Configure Integrations**: Set up AAP, Prometheus, or EDA integrations
-5. **Customize Prompts**: Edit `sage/core/prompt_templates.py` for your needs
-6. **Add Providers**: Implement new LLM providers in `sage/core/providers/`
+5. **Customize Prompts**: Edit `ansible_maya/core/prompt_templates.py` for your needs
+6. **Add Providers**: Implement new LLM providers in `ansible_maya/core/providers/`
 
 ## Troubleshooting
 

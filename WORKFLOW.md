@@ -362,7 +362,7 @@ POST /api/v1/events/generate
 1. **Start Conservative**: Begin with `GIT_AUTO_PUBLISH=false`, review everything
 2. **Tune Confidence**: Adjust thresholds based on your risk tolerance
 3. **Monitor Results**: Track success rate of generated playbooks
-4. **Refine Prompts**: Customize templates in `sage/core/prompt_templates.py`
+4. **Refine Prompts**: Customize templates in `ansible_maya/core/prompt_templates.py`
 5. **Test in Staging**: Always test review/draft branch playbooks first
 6. **Audit Trail**: Git history provides complete audit trail
 7. **Rollback Ready**: Git allows easy rollback of problematic playbooks

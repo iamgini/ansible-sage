@@ -18,7 +18,7 @@ This directory contains examples demonstrating how to use Ansible Maya for event
 3. **Optional: Start API Server** (for API examples):
    ```bash
    make run
-   # Or: uvicorn sage.api.server:app --reload
+   # Or: uvicorn ansible_maya.api.server:app --reload
    ```
 
 ## Examples
@@ -210,7 +210,7 @@ pip install ansible-lint
 Start the API server:
 ```bash
 make run
-# Or: uvicorn sage.api.server:app
+# Or: uvicorn ansible_maya.api.server:app
 ```
 
 **Error: Module not found**
@@ -223,8 +223,8 @@ pip install -e .
 ## Next Steps
 
 1. Review the generated playbooks
-2. Customize event types in `sage/handlers/orchestrator.py`
-3. Add custom prompt templates in `sage/core/prompt_templates.py`
+2. Customize event types in `ansible_maya/handlers/orchestrator.py`
+3. Add custom prompt templates in `ansible_maya/core/prompt_templates.py`
 4. Integrate with your monitoring system (Prometheus, EDA, etc.)
 5. Deploy as a containerized service with `docker-compose up`
 

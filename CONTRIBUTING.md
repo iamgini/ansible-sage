@@ -95,7 +95,7 @@ cp .env.example .env
 pytest
 
 # Run with coverage
-pytest --cov=sage --cov-report=html
+pytest --cov=ansible_maya --cov-report=html
 
 # Run specific test file
 pytest tests/unit/core/test_ansible_context.py -v
@@ -122,14 +122,14 @@ We use the following tools to maintain code quality:
 Run all checks:
 ```bash
 # Format code
-black sage/ tests/
-isort sage/ tests/
+black ansible_maya/ tests/
+isort ansible_maya/ tests/
 
 # Lint
-ruff check sage/ tests/
+ruff check ansible_maya/ tests/
 
 # Type check
-mypy sage/
+mypy ansible_maya/
 
 # Or run all via pre-commit
 pre-commit run --all-files
@@ -203,7 +203,7 @@ pre-commit run --all-files
 
 ```
 ansible-maya/
-├── sage/                       # Main application package
+├── ansible_maya/                       # Main application package
 │   ├── core/                   # Core business logic
 │   │   ├── ansible_context.py  # Ansible-specific prompt engineering
 │   │   ├── providers/          # LLM provider implementations
@@ -243,7 +243,7 @@ ansible-maya/
 
 1. **Create provider file:**
    ```bash
-   touch sage/core/providers/newprovider.py
+   touch ansible_maya/core/providers/newprovider.py
    ```
 
 2. **Implement provider class:**
@@ -273,7 +273,7 @@ ansible-maya/
 
 3. **Register provider:**
    ```python
-   # sage/core/providers/__init__.py
+   # ansible_maya/core/providers/__init__.py
    from ansible_maya.core.providers.newprovider import NewProvider
    
    PROVIDERS = {

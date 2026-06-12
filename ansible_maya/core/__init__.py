@@ -1,7 +1,7 @@
 # Copyright 2026 Ansible Maya Contributors
 # Licensed under the Apache License, Version 2.0
 
-"""Core business logic for Ansible Sage."""
+"""Core business logic for Ansible Maya."""
 
 from ansible_maya.core.ansible_context import AnsibleContextProcessor, AnsibleFileType
 from ansible_maya.core.exceptions import (

@@ -1,4 +1,4 @@
-# Ansible Sage - Minimal Demo Dependencies
+# Ansible Maya - Minimal Demo Dependencies
 
 # Web Framework
 fastapi==0.115.6

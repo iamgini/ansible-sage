@@ -164,9 +164,9 @@ Requirements:
 Enable debug logging in `.env`:
 
 ```bash
-SAGE_LOG_LEVEL=DEBUG
-SAGE_LOG_LLM_PROMPTS=true
-SAGE_LOG_LLM_RESPONSES=true
+MAYA_LOG_LEVEL=DEBUG
+MAYA_LOG_LLM_PROMPTS=true
+MAYA_LOG_LLM_RESPONSES=true
 ```
 
 Logs will show:
@@ -411,9 +411,9 @@ docker-compose exec ansible-maya bash
 Run with full debug output:
 
 ```bash
-SAGE_LOG_LEVEL=DEBUG \
-SAGE_LOG_LLM_PROMPTS=true \
-SAGE_LOG_LLM_RESPONSES=true \
+MAYA_LOG_LEVEL=DEBUG \
+MAYA_LOG_LLM_PROMPTS=true \
+MAYA_LOG_LLM_RESPONSES=true \
 python -m ansible_maya.api.server
 ```
 
